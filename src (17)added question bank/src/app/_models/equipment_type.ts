@@ -3,3 +3,4 @@ export class Equipment_Type {
     EquipmentTypeDescription!: string;
     }
   
+   

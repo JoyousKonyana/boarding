@@ -10,7 +10,6 @@ namespace BMW_ONBOARDING_SYSTEM.ViewModel
 
        
         public int EquipmentId { get; set; }
-        public int EquipmentQueryStatusId { get; set; }
         public int? OnboarderId { get; set; }
 
         public string EquipmentQueryDescription { get; set; }

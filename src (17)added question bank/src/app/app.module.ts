@@ -31,9 +31,6 @@ import {
   SS_EquipmentComponent,
   My_EquipmentComponent,
   EquipDashboardComponent,
-  Equipment_TypeComponent,
-  QueryComponent,
-  EquipmentQueryComponent,
 
   //Charts
   TypeChartComponent,
@@ -129,7 +126,8 @@ import { ManageBankQuestionsComponent } from './course/manage-bank-questions/man
 ;
 import { ListQuestionAnswersComponent } from './course/list-question-answers/list-question-answers.component'
 ;
-import { AddQuestionAnswerComponent } from './course/add-question-answer/add-question-answer.component'//Date Picker
+import { AddQuestionAnswerComponent } from './course/add-question-answer/add-question-answer.component';
+import { ListCourseEnrollmentsComponent } from './course/list-course-enrollments/list-course-enrollments.component'
 //import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
@@ -188,9 +186,6 @@ import { AddQuestionAnswerComponent } from './course/add-question-answer/add-que
     SS_EquipmentComponent,
     My_EquipmentComponent,
     EquipDashboardComponent,
-    Equipment_TypeComponent,
-    QueryComponent,
-    EquipmentQueryComponent,
     TypeChartComponent, //Chart
     BrandChartComponent, //Chart
 
@@ -219,7 +214,8 @@ import { AddQuestionAnswerComponent } from './course/add-question-answer/add-que
     ManageBankQuestionsComponent
 ,
     ListQuestionAnswersComponent ,
-    AddQuestionAnswerComponent ],
+    AddQuestionAnswerComponent ,
+    ListCourseEnrollmentsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

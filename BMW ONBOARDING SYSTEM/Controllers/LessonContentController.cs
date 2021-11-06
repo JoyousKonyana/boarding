@@ -197,25 +197,6 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
-
-        [HttpGet("{id}")]
-        [Route("[action]")]
-        public async Task<IActionResult> GetLessonContentByArchiveId()
-        {
-            try
-            {
-                var result = await _lessonContentRepository.GetArchivedLessonContent();
-
-                if (result == null) return NotFound();
-
-                return Ok(result);
-            }
-            catch (Exception)
-            {
-
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
-            }
-        }
     }
 
 }

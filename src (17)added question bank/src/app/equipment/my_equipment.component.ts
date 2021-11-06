@@ -15,7 +15,7 @@ import { EquipmentService, Equipment_QueryService, AlertService } from '../_serv
 export class My_EquipmentComponent implements OnInit {
 
   x!: any;
-  //y: Equipment_Query[] = [];
+  y: Equipment_Query[] = [];
   query: any = {};
 
   constructor(
@@ -49,12 +49,11 @@ private loadAll() {
 
   model: any = {};
 
-  model2: Equipment_Query = {
+  model2: EquipmentQuery = {
     EquipmentId: 0,
     EquipmentQueryDescription: '',
     EquipmentQueryDate: '',
-    OnboarderId: 1,
-    EquipmentQueryId: 0
+    OnboarderId: 0
   }; 
 
   myValue = 0;
@@ -62,23 +61,45 @@ private loadAll() {
   editReport_Query(editReport_QueryInfo: number) {
     this.newReport_QueryClicked = !this.newReport_QueryClicked;
     this.myValue = editReport_QueryInfo;
-  }
 
-  Report_Query() {
+    this.xService.GetAssignedEquipment(editReport_QueryInfo)
+      .pipe(first())
+      .subscribe(
+        query => {
+          query = query;
+        },
+        error => {
+          this.alertService.error('Error, Data was unsuccesfully retrieved');
+        } 
+      );
+
+    this.model.EquipmentQueryDescription = this.query.equipmentQueryDescription;
+    this.model.EquipmentQueryDate = this.query.equipmentQueryDate;
+    this.myValue = editReport_QueryInfo;
+  }
+  
+
+  updateReport_Query() {
     let editReport_QueryInfo = this.myValue;
 
-    this.model2.EquipmentId = this.x[editReport_QueryInfo].EquipmentId;
+        // this.yService.create(this.model2)
+        //     .pipe(first())
+        //     .subscribe(
+        //         data => {
+        //             this.alertService.success('Report was successful', true);
+        //             this.loadAll()
+        //         },
+        //         error => {
+        //             this.alertService.error('Error, Report was unsuccesful');
+        //         });
 
-    this.yService.create(this.model2)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Query was Reported was successfully', true);
-                    this.loadAll()
-                },
-                error => {
-                    this.alertService.error('Error, Report was unsuccesful');
-                });
+    // for(let i = 0; i < this.x.length; i++) {
+
+    //   if(i == editReport_QueryInfo) 
+    //   {
+    
+    //   }
+    // }
 
     this.newReport_QueryClicked = !this.newReport_QueryClicked;
   }

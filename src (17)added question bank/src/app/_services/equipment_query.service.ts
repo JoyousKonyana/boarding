@@ -1,4 +1,3 @@
-import { Query_Status } from './../_models/query_status';
 import { ResolveQuery } from './../_models/resolvequery';
 
 import { Injectable } from '@angular/core';
@@ -19,39 +18,21 @@ export class Equipment_QueryService {
   //   // Content-Type: "application/json"
   //  };
 
-  userId: any = localStorage.getItem('user');
-
   httHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }  
 
-  getAllEquipment_Query(): Observable<any> {  
-    return this.http.get<any>(`${this.url}/GetAllEqipmentQueries`);  
+  getAllEquipment_Query(): Observable<Equipment_Query[]> {  
+    return this.http.get<Equipment_Query[]>(`${this.url}/GetAllQueries`);  
   }  
 
   getEquipment_QueryById(id: number): Observable<Equipment_Query> {  
       return this.http.get<Equipment_Query>(`${this.url}/GetQuerybyid/` +id);  
     }
 
-  create(x:Equipment_Query) {
-    return this.http.post(`${this.url}/ReportEquipmentQuery/`+ 1, x);
+  create(x:EquipmentQuery) {
+    return this.http.post(`${this.url}/ReportEquipmentQuery`, x, {headers:this.httHeaders});
   }
-
-  url2 = 'https://localhost:44319/api/EquipmentQueryStatus'; 
-  //Status
-  createQueryStatus(x:Query_Status) {
-    return this.http.post(`${this.url2}/CreateQueryStatus/` + 1, x);
-  }
-  getAllQueryStatus(): Observable<any> {
-    return this.http.get<any>(`${this.url2}/GetAllQueryStatuses`);
-  }
-  deleteQueryStatus(id: number) {
-    return this.http.delete(`${this.url2}/DeleteQueryStatus/` + id + '/' + this.userId);
-  }
-  updateQueryStatus(id: number, query_status: Query_Status) {
-    return this.http.put(`${this.url2}/UpdateQueryStatus/` + id + '/' + this.userId, query_status);
-  }
-
   resolveQuery(resolve: ResolveQuery){
     return this.http.put(`${this.url}/ResolveQuery`, resolve);
   }

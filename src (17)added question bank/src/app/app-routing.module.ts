@@ -1,6 +1,5 @@
 
 
-
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -48,9 +47,6 @@ import {
   EquipmentComponent,
   SS_EquipmentComponent,
   My_EquipmentComponent,
-  Equipment_TypeComponent,
-  EquipmentQueryComponent,
-  QueryComponent,
   EquipDashboardComponent
 } from './equipment';
 
@@ -93,6 +89,7 @@ import {
 import { AuthGuard } from './_helpers';
 import { Question_BankComponent } from './course/question_bank/question_bank.component';
 import { ManageBankQuestionsComponent } from './course/manage-bank-questions/manage-bank-questions.component';
+import { ListCourseEnrollmentsComponent } from './course/list-course-enrollments/list-course-enrollments.component';
 
 const routes: Routes = [
   {
@@ -188,11 +185,6 @@ const routes: Routes = [
   {
     path: 'crud_employee',
     component: CRUD_EmployeeComponent,
-    //canActivate: [AuthGuard]
-  },
-  {
-    path: 'equipment_type',
-    component: Equipment_TypeComponent,
     //canActivate: [AuthGuard]
   },
 
@@ -333,7 +325,6 @@ const routes: Routes = [
     path: 'question_bank',
     component: Question_BankComponent,
   },
-  { path: 'manage-bank-questions/:bankId', component: ManageBankQuestionsComponent },
   {
     path: 'option/:id',
     component: OptionComponent,
@@ -357,16 +348,6 @@ const routes: Routes = [
     //canActivate: [AuthGuard]
   },
   {
-    path: 'query',
-    component: QueryComponent,
-    //canActivate: [AuthGuard]
-  },
-  {
-    path: 'equipment_query',
-    component: EquipmentQueryComponent,
-    //canActivate: [AuthGuard]
-  },
-  {
     path: 'equipdashboard',
     component: EquipDashboardComponent,
 
@@ -382,6 +363,8 @@ const routes: Routes = [
     component: AccountComponent,
   },
 
+  { path: 'manage-bank-questions/:bankId', component: ManageBankQuestionsComponent },
+  { path: 'course/enrollments/:courseId', component: ListCourseEnrollmentsComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

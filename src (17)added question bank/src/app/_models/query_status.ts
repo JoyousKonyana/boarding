@@ -1,4 +1,4 @@
 export class Query_Status {
-    EquipmentQueryStatusId!: number;
-    EquipmentQueryDescription!: string;
+    Equipment_Query_Status_ID!: number;
+    Equipment_Query_Description!: string;
     }
